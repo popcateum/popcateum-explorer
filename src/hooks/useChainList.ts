@@ -10,7 +10,7 @@ export default function() {
     {
       name: "Popcateum",
       network: "mainnet",
-      rpc: ["http://34.122.106.50:9506"],
+      rpc: ["https://dataseed.popcateum.org"],
     },
   ]);
 
