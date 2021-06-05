@@ -2,7 +2,6 @@ import { Grid, Typography, CircularProgress, Theme, Button } from "@material-ui/
 import useEthRPCStore from "../stores/useEthRPCStore";
 import * as React from "react";
 import { weiToGwei } from "../components/formatters";
-import HashRate from "../components/HashRate";
 import getBlocks, { useBlockNumber } from "../helpers";
 import useInterval from "use-interval";
 import { useTheme } from "@material-ui/styles";
@@ -30,7 +29,7 @@ export default (props: any) => {
   const victoryTheme = getTheme(theme);
   const [blockNumber] = useBlockNumber(erpc);
   const [chainId, setChainId] = useState<string>();
-  const [block, setBlock] = useState<IBlock>();
+  // const [block, setBlock] = useState<IBlock>();
   const [blocks, setBlocks] = useState<IBlock[]>();
   const [gasPrice, setGasPrice] = useState<string>();
   const [syncing, setSyncing] = useState<ISyncing>();
@@ -50,7 +49,7 @@ export default (props: any) => {
     if (!erpc || blockNumber === undefined) { return; }
     erpc.eth_getBlockByNumber(`0x${blockNumber.toString(16)}`, true).then((b) => {
       if (b === null) { return; }
-      setBlock(b);
+      // setBlock(b);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [blockNumber]);
@@ -114,15 +113,6 @@ export default (props: any) => {
           <Grid key="gasPrice" item>
             <ChartCard title={t("Gas Price")}>
               <Typography variant="h4">{weiToGwei(hexToNumber(gasPrice))} Gwei</Typography>
-            </ChartCard>
-          </Grid>
-          <Grid key="hRate" item>
-            <ChartCard title={t("Network Hash Rate")}>
-              {block &&
-                <HashRate block={block} blockTime={config.blockTime}>
-                  {(hashRate: any) => <Typography variant="h4">{hashRate} GH/s</Typography>}
-                </HashRate>
-              }
             </ChartCard>
           </Grid>
           <Grid key="peers" item>

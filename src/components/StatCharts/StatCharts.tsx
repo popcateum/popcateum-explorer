@@ -1,10 +1,10 @@
 import React from "react";
 import BigNumber from "bignumber.js";
-import { hashesToGH } from "../formatters";
+// import { hashesToGH } from "../formatters";
 import { hexToNumber } from "@etclabscore/eserialize";
 import { Grid } from "@material-ui/core";
 import ChartCard from "../ChartCard";
-import { VictoryLine, VictoryBar, VictoryChart } from "victory";
+import { VictoryBar, VictoryChart } from "victory";
 import { useTranslation } from "react-i18next";
 
 const config = {
@@ -28,12 +28,12 @@ const blockMapUncles = (block: any) => {
   };
 };
 
-const blockMapHashRate = (block: any) => {
-  return {
-    x: hexToNumber(block.number),
-    y: hashesToGH(new BigNumber(block.difficulty, 16).dividedBy(config.blockTime)),
-  };
-};
+// const blockMapHashRate = (block: any) => {
+//   return {
+//     x: hexToNumber(block.number),
+//     y: hashesToGH(new BigNumber(block.difficulty, 16).dividedBy(config.blockTime)),
+//   };
+// };
 
 const blockMapTransactionCount = (block: any) => {
   return {
@@ -51,13 +51,6 @@ const StatCharts: React.FC<IProps> = ({ blocks, victoryTheme }) => {
   const { t } = useTranslation();
   return (
     <Grid item container>
-      <Grid key="hashChart" item xs={12} md={6} lg={3}>
-        <ChartCard title={t("Hash Rate")}>
-          <VictoryChart height={config.chartHeight} width={config.chartWidth} theme={victoryTheme as any}>
-            <VictoryLine data={blocks.map(blockMapHashRate)} />
-          </VictoryChart>
-        </ChartCard>
-      </Grid>
       <Grid key="txChart" item xs={12} md={6} lg={3}>
         <ChartCard title={t("Transaction count")}>
           <VictoryChart height={config.chartHeight} width={config.chartWidth} theme={victoryTheme as any}>

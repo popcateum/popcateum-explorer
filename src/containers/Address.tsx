@@ -31,7 +31,7 @@ const Address: React.FC<IProps> = ({ match, history }) => {
   const blockNum = block === undefined ? blockNumber : parseInt(block, 10);
   const [transactions, setTransactions] = React.useState<Transaction[]>([]);
 
-  const from = Math.max(blockNum ? blockNum : 0 - 99, 0);
+  const from = Math.max(blockNum - 99, 0);
   const to = blockNum;
 
   React.useEffect(() => {
@@ -72,12 +72,13 @@ const Address: React.FC<IProps> = ({ match, history }) => {
   React.useEffect(() => {
     if (!erpc) { return; }
     getBlocks(from, to, erpc).then((blcks) => {
+      const lowerAddress = address.toLowerCase()
       const txes = _.flatMap(blcks, "transactions");
       const filteredTxes = _.filter(txes, (tx: any) => {
         if (!tx) {
           return false;
         }
-        return tx.to === address || tx.from === address;
+        return tx.to === lowerAddress || tx.from === lowerAddress;
       });
       const sortedTxes = _.sortBy(filteredTxes, (tx: any) => {
         return hexToNumber(tx.blockNumber);
