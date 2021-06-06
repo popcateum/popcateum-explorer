@@ -1,24 +1,13 @@
-# Expedition
+# Popcat Explorer
 
 <!-- project logo w/ quick links -->
 <p align="center">
-  <img src="https://github.com/etclabscore/jade-media-assets/blob/master/j-explorer/j-explorer(PNG)/128x128.png?raw=true" />
+  <img src="assets/Popcat-logo.png" width="128" alt="popcateumlogo128" />
 </p>
 <center>
-  <h3 align="center">Expedition</h3>
-
-  <p align="center">
-    A block explorer for the Ethereum Stack.
-    <br />
-    <a href="https://expedition.dev">View Demo</a>
-    ·
-    <a href="https://github.com/etclabscore/expedition/issues/new?assignees=&labels=&template=bug_report.md&title=">Report Bug</a>
-    ·
-    <a href="https://github.com/etclabscore/expedition/issues/new?assignees=&labels=&template=feature_request.md&title=">Request Feature</a>
-  </p>
+  <h3 align="center">Popcat Explorer</h3>
+  This project was forked from the <a href="https://github.com/xops/expedition">Expedition</a> project.
 </center>
-
-![expedition_gif](https://user-images.githubusercontent.com/364566/94349388-d17fb000-fff8-11ea-92ae-71c002474a65.gif)
 
 <!-- table of contents -->
 ## Table of Contents
@@ -36,7 +25,7 @@
 <!-- about the project -->
 ## About The Project
 
-[Expedition](https://expedition.dev) is a minimal block explorer for Ethereum Stack and utilizes [Jade Service Runner](https://github.com/etclabscore/jade-service-runner) for managing background services (Multi-Geth), OpenRPC for underlying functionality, and Pristine. It does not use a database, and can be configured to point at any remote RPC node for any EVM-based network. The goal of Jade Explorer is to provide a resource for network information and block exploration.
+[Popcat Explorer](https://explorer.popcateum.org) is a minimal block explorer for Popcateum Stack and utilizes [Jade Service Runner](https://github.com/etclabscore/jade-service-runner) for managing background services (Multi-Geth), OpenRPC for underlying functionality, and Pristine. It does not use a database, and can be configured to point at any remote RPC node for any EVM-based network. The goal of Jade Explorer is to provide a resource for network information and block exploration.
 
 Explorer Features:
 - Display chain id
@@ -56,7 +45,7 @@ Explorer Features:
 ### Installation
 Clone/ download the project, and install dependencies.
 ```bash
-git clone https://github.com/xops/expedition.git && cd expedition && npm install
+git clone https://github.com/popcateum/popcateum-explorer.git && cd expedition && npm install
 ```
 
 <!-- example usage, screen shots, demos -->
