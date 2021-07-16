@@ -1,4 +1,4 @@
-# Popcat Explorer
+# Popcateum Explorer
 
 <!-- project logo w/ quick links -->
 <p align="center">
