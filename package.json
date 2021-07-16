@@ -1,4 +1,5 @@
 {
+  "homepage": "https://explorer.popcateum.org",
   "name": "@xops.net/expedition",
   "version": "1.0.2",
   "description": "Expedition is a block explorer for the Ethereum Stack",
@@ -16,7 +17,9 @@
     "start": "react-scripts start",
     "test": "react-scripts test",
     "lint": "tslint -p tsconfig.json",
-    "version": "cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]'"
+    "version": "cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]'",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@etclabscore/eserialize": "^1.0.2",
@@ -36,6 +39,7 @@
     "bignumber.js": "^9.0.0",
     "ethereumjs-util": "^6.1.0",
     "ethjs-unit": "^0.1.6",
+    "gh-pages": "2.2.0",
     "history": "^4.9.0",
     "i18next": "^17.3.1",
     "i18next-browser-languagedetector": "^3.1.1",
