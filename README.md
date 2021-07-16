@@ -2,10 +2,10 @@
 
 <!-- project logo w/ quick links -->
 <p align="center">
-  <img src="assets/Popcat-logo.png" width="128" alt="popcateumlogo128" />
+  <img src="assets/Popcateum-explorer.png" width="128" alt="popcateumlogo128" />
 </p>
 <center>
-  <h3 align="center">Popcat Explorer</h3>
+  <h3 align="center">Popcateum Explorer</h3>
   This project was forked from the <a href="https://github.com/xops/expedition">Expedition</a> project.
 </center>
 
