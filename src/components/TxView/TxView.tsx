@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from 'react'
 import { Link as RouterLink } from "react-router-dom";
 import Link from "@material-ui/core/Link";
 import { Table, TableBody, TableCell, TableRow, Typography, Button } from "@material-ui/core";
@@ -6,6 +7,7 @@ import { hexToNumber } from "@etclabscore/eserialize";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
 
+const { decode } = require('hex-encode-decode')
 const unit = require("ethjs-unit"); //tslint:disable-line
 
 export interface ITxViewProps {
@@ -17,6 +19,21 @@ function TxView(props: ITxViewProps) {
   const { tx, receipt } = props;
   const { t } = useTranslation();
   const history = useHistory();
+  const [changed, setChanged] = useState(false)
+  const [changeTxt, setChangeTXT] = useState('to Text')
+
+  const txInputUTF8 = decode(tx.input)
+
+  const changeInputData = () => {
+    if (changed === false) {
+      setChangeTXT('to Hex')
+      setChanged(true)
+    } else {
+      setChangeTXT('to Text')
+      setChanged(false)
+    }
+  }
+
   if (!tx) {
     return null;
   }
@@ -113,8 +130,31 @@ function TxView(props: ITxViewProps) {
           </TableRow>
 
           <TableRow>
-            <TableCell>{t("Input")}</TableCell>
-            <TableCell>{tx.input}</TableCell>
+            <TableCell>{t("Input ")}
+              <button onClick={changeInputData}>
+                {changeTxt}
+              </button>
+            </TableCell>
+            {
+              changed ||
+              <TableCell>
+              <textarea readOnly rows={7} style={{
+                width: '100%',
+              }}>
+                {tx.input}
+              </textarea>
+            </TableCell>
+            }
+            {
+              changed &&
+              <TableCell>
+              <textarea readOnly rows={7} style={{
+                width: '100%',
+              }}>
+                {txInputUTF8}
+              </textarea>
+            </TableCell>
+            }
           </TableRow>
 
           <TableRow>
